@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Firebase configuration
+        FIRApp.configure()
+        
+        setupGlobalAppearanceAttributes()
         return true
+    }
+    
+    // Global application appearance customisation
+    func setupGlobalAppearanceAttributes() {
+        UINavigationBar.appearance().barTintColor = NAVBAR_BLUE_COLOR
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightThin), NSForegroundColorAttributeName: UIColor.white]
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
